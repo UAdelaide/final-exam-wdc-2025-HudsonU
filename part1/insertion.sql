@@ -25,5 +25,28 @@ INSERT INTO WalkApplications (request_id, walker_id, status) VALUES
 (1, (SELECT user_id FROM Users WHERE username = 'bobwalker'), 'rejected'),
 (2, (SELECT user_id FROM Users WHERE username = 'johndoe'), 'accepted'),
 (3, (SELECT user_id FROM Users WHERE username = 'bobwalker'), 'accepted'),
-(4, (SELECT user_id FROM Users WHERE username = 'johndoe'), 'accepted'),
-(5, (SELECT user_id FROM Users WHERE username = 'bobwalker'), 'accepted');
+(4, (SELECT user_id FROM Users WHERE username = 'johndoe'), 'pending'),
+(5, (SELECT user_id FROM Users WHERE username = 'bobwalker'), 'rejected');
+
+INSERT INTO WalkRatings (request_id, walker_id, owner_id, rating, comments)
+VALUES
+(1,
+ (SELECT user_id FROM Users WHERE username = 'bobwalker'),
+ (SELECT user_id FROM Users WHERE username = 'alice123'),
+ 5, 'Great job! Max loved the walk.'),
+(2,
+ (SELECT user_id FROM Users WHERE username = 'johndoe'),
+ (SELECT user_id FROM Users WHERE username = 'carol123'),
+ 4, 'Thanks! Bella seemed happy.'),
+(3,
+ (SELECT user_id FROM Users WHERE username = 'bobwalker'),
+ (SELECT user_id FROM Users WHERE username = 'timthedoglover'),
+ 5, 'Abra came back tired, excellent.'),
+(4,
+ (SELECT user_id FROM Users WHERE username = 'johndoe'),
+ (SELECT user_id FROM Users WHERE username = 'timthedoglover'),
+ 3, 'Kadabra was okay, a bit restless.'),
+(5,
+ (SELECT user_id FROM Users WHERE username = 'bobwalker'),
+ (SELECT user_id FROM Users WHERE username = 'timthedoglover'),
+ 4, 'Alakazam had a good time.');
