@@ -96,8 +96,8 @@ app.get("/api/walkrequests/open", async (req, res) => {
         WHERE r.status = 'open';`);
 
     const result = rows.map((row) => ({
-        dog_name: row.name,
-        size: row.size,
+        request_id: row.request_id,
+        dog_name: row.dog_name,
         owner_username: row.username
     }));
 
