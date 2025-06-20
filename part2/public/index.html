@@ -27,7 +27,7 @@
         <p>Password:</p>
         <input type="password" v-model="password" class="form-control" placeholder="Password" required>
       </div>
-      <br>  
+      <br>
       <button type="submit" class="btn btn-primary w-100">Login</button>
 
       <div v-if="errorMessage" class="alert alert-danger mt-3">
@@ -56,7 +56,7 @@
           successMessage.value = '';
 
           try {
-            const response = await fetch('/users/login', {
+            const response = await fetch('/api/users/login', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json'
