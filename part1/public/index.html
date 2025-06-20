@@ -89,11 +89,8 @@
                         console.error('Failed to fetch dog image:', error);
                     }
                 }
-
-                // Call it when the component is mounted
                 onMounted(fetchDogImage);
-
-                // Use this method on button click
+                
                 function refreshDogImage() {
                     fetchDogImage();
                 }
