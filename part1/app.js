@@ -126,7 +126,7 @@ app.get("/api/walkers/summary", async (req, res) => {
     */
     const [rows] = await db.query(`
     SELECT u.username AS walker_username, COUNT(r.rating_id) AS total_ratings,
-    ROUND(AVG(r.rating), 1) AS average_rating, COUNT(DISTINCT r.request_id) AS completed_walks
+    ROUND(AVG(r.rating), 2) AS average_rating, COUNT(DISTINCT r.request_id) AS completed_walks
     FROM Users u LEFT JOIN WalkRatings r ON u.user_id = r.walker_id
     WHERE u.role = 'walker'
     GROUP BY u.user_id;`);
@@ -134,8 +134,8 @@ app.get("/api/walkers/summary", async (req, res) => {
     const result = rows.map((row) => ({
         walker_username: row.walker_username,
         total_ratings: row.total_ratings,
-        average_rating: row.requested_time,
-        completed_walks: row.duration_minutes
+        average_rating: row.average_rating,
+        completed_walks: row.completed_walks
     }));
 
     res.json(result);
