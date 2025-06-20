@@ -90,6 +90,7 @@
         const myDogs = ref([]);
 
         async function fetchMyDogs() {
+          console.log("fetching my dogs");
           const response = await fetch('/api/users/mydogs', {
             credentials: 'include'
           });
