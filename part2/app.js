@@ -22,5 +22,18 @@ const userRoutes = require('./routes/userRoutes');
 app.use('/api/walks', walkRoutes);
 app.use('/api/users', userRoutes);
 
+app.get("/api/dogs", async (req, res) => {
+    // Return a list of all dogs with their size and owner's username.
+    const [rows] = await db.query('SELECT d.name, d.size, u.username FROM Dogs as d LEFT JOIN Users as u ON d.owner_id = u.user_id;');
+
+    const result = rows.map((row) => ({
+        dog_name: row.name,
+        size: row.size,
+        owner_username: row.username
+    }));
+
+    res.json(result);
+});
+
 // Export the app instead of listening here
 module.exports = app;
