@@ -1,10 +1,10 @@
 /* eslint-disable max-len */
 // app.js
 const express = require('express');
-const mysql = req
+const mysql = require('mysql2');
 const app = express();
 
-const
+const db = mysql.connect();
 
 app.get('/', (req, res) => {
     res.send('Hello, Express!');
