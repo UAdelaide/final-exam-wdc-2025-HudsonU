@@ -2,6 +2,8 @@
 // app.js
 const express = require('express');
 const mysql = require('mysql2');
+const fs = require('fs');
+// create app
 const app = express();
 
 const db = mysql.createConnection({
