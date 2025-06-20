@@ -60,7 +60,7 @@ app.get("/api/dogs", async (req, res) => {
             }
         ]
     */
-    const [rows, fields] = await db.query('SELECT d.dog_name, d.size, o.owner_username FROM Dogs as d');
+    const [rows, fields] = await db.query('SELECT d.name, d.size, u.username FROM Dogs as d LEFT JOIN Users as u ON d.owner_id = u.user_id;');
 });
 
 app.get("/api/walkrequests/open", async (req, res) => {
