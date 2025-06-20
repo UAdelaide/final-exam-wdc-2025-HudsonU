@@ -67,6 +67,23 @@
         const message = ref('Welcome to the Dog Walking Service!');
         const dogs = ref([]);
 
+        async function loadDogs() {
+          try {
+            const res = await fetch("/api/dogs");
+            const dogData = await res.json();
+
+            // For each dog, also fetch a random photo
+            for (const dog of dogData) {
+              const photoRes = await fetch("https://dog.ceo/api/breeds/image/random");
+              const photoData = await photoRes.json();
+              dog.photo = photoData.message; // add a photo property
+            }
+
+            dogs.value = dogData;
+          } catch (err) {
+            console.error("Failed to load dogs:", err);
+          }
+        }
         async function login() {
           errorMessage.value = '';
           successMessage.value = '';
@@ -101,7 +118,7 @@
             errorMessage.value = err.message;
           }
         }
-
+        onMounted(loadDogs);
         return {
           username,
           password,
