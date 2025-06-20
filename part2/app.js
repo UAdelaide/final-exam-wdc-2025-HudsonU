@@ -29,9 +29,9 @@ app.get("/api/dogs", async (req, res) => {
 
     const result = rows.map((row) => ({
         dog_id: row.dog_id,
-        dog_name: row.name:,
+        dog_name: row.name,
         size: row.size,
-        owner_id: row.username
+        owner_id: row.owner_id
     }));
 
     res.json(result);
