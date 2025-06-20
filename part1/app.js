@@ -88,6 +88,15 @@ app.get("/api/walkrequests/open", async (req, res) => {
             }
         ]
     */
+    const [rows] = await db.query('SELECT d.name, d.size, u.username FROM Dogs as d LEFT JOIN Users as u ON d.owner_id = u.user_id;');
+
+    const result = rows.map((row) => ({
+        dog_name: row.name,
+        size: row.size,
+        owner_username: row.username
+    }));
+
+    res.json(result);
 });
 
 app.get("/api/walkers/summary", async (req, res) => {
