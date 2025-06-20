@@ -33,7 +33,7 @@ router.get('/me', (req, res) => {
   if (!req.session.UserID) {
     return res.status(401).json({ error: 'Not logged in' });
   }
-  res.json(req.session.user);
+  res.json(req.session.UserID);
 });
 
 router.get('/mydogs', async (req, res) => {
