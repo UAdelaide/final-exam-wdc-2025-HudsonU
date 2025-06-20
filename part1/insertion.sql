@@ -8,5 +8,5 @@ INSERT INTO Users (username, email, password_hash, role) VALUES
 ('timthedoglover', 'tim@example.com', 'password456', 'owner');
 
 INSERT INTO Dogs (owner_id, name, size) VALUES
-('alice123', 'alice@example.com', 'medium'),
+('alice123', 'Max', 'medium'),
 INSERT INTO WalkRequests
