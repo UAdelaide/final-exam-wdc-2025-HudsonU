@@ -132,8 +132,8 @@ app.get("/api/walkers/summary", async (req, res) => {
     GROUP BY u.user_id;`);
 
     const result = rows.map((row) => ({
-        walker_username: row.request_id,
-        total_ratings: row.name,
+        walker_username: row.walker_username,
+        total_ratings: row.total_ratings,
         average_rating: row.requested_time,
         completed_walks: row.duration_minutes
     }));
