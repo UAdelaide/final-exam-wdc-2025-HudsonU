@@ -68,8 +68,7 @@
             throw new Error('Not logged in');
           }
 
-          const userId = await response.json();
-          return userId;
+          this.requestId = await response.json();
         }
         async function applyToWalk(requestId) {
           try {
