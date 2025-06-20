@@ -20,14 +20,13 @@
 
       <div>
         <p>Username:</p>
-        <input type="text" v-model="username" class="form-control" placeholder="Username" required>
+        <input type="email" v-model="email" class="form-control" placeholder="Email" required>
       </div>
 
       <div>
-        <p>Password:</p>
         <input type="password" v-model="password" class="form-control" placeholder="Password" required>
       </div>
-      <br>
+
       <button type="submit" class="btn btn-primary w-100">Login</button>
 
       <div v-if="errorMessage" class="alert alert-danger mt-3">
@@ -45,7 +44,7 @@
 
     createApp({
       setup() {
-        const username = ref('');
+        const email = ref('');
         const password = ref('');
         const errorMessage = ref('');
         const successMessage = ref('');
@@ -62,7 +61,7 @@
                 'Content-Type': 'application/json'
               },
               body: JSON.stringify({
-                username: username.value,
+                email: email.value,
                 password: password.value
               })
             });
@@ -81,7 +80,7 @@
         }
 
         return {
-          username,
+          email,
           password,
           login,
           errorMessage,
