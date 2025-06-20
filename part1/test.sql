@@ -8,4 +8,4 @@ JOIN Dogs AS d ON r.dog_id = d.dog_id
 JOIN Users AS u ON d.owner_id = u.user_id
 WHERE r.status = 'open';
 
-SELECT w.username
+SELECT w.username, count
