@@ -16,10 +16,5 @@ INSERT INTO Dogs (owner_id, name, size) VALUES
 
 INSERT INTO WalkRequests (
     dog_id,
-    requested_time,
-    duration_minutes,
-    location,
-    status ENUM('open', 'accepted', 'completed', 'cancelled') DEFAULT 'open',
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (dog_id) REFERENCES Dogs(dog_id)
+    requested_time, duration_minutes, location, status, created_at
 );
