@@ -99,9 +99,9 @@ app.get("/api/walkrequests/open", async (req, res) => {
         request_id: row.request_id,
         dog_name: row.name,
         requested_time: row.requested_time,
-        requested_time: row.requested_time,
-        requested_time: row.requested_time,
-        requested_time: row.username
+        duration_minutes: row.duration_minutes,
+        location: row.location,
+        owner_username: row.username
     }));
 
     res.json(result);
