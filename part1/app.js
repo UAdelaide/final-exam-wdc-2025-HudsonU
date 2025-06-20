@@ -4,12 +4,15 @@
 const express = require('express');
 const mysql = require('mysql2/promise');
 const fs = require('fs').promises;
+const path = require('path');
 // create app
 const app = express();
 
 app.listen(8080, () => {
     console.log(`Server is running on http://localhost:8080`);
 });
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 var db;
 
