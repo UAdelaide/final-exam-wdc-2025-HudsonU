@@ -35,6 +35,19 @@
 
 <body>
     <div id="app">
+        <button type=""button @click="refreshDog" style="
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    width: 24px;
+    height: 24px;
+    font-size: 16px;
+    padding: 0;
+    border-radius: 4px;
+    cursor: pointer;
+  " aria-label="Refresh dog image">
+            🔄
+        </button>
         <div class="dog-card" v-if="dogImage">
             <img :src="dogImage" alt=" ">
             <h2>🐾 Dog of the Day: Max </h2>
