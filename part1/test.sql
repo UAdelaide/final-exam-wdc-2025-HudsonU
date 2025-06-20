@@ -1,1 +1,1 @@
-SELECT d.dog_id, 
+SELECT d.name, d.size, u.username
