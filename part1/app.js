@@ -20,6 +20,6 @@ app.get("/api/walkrequests/open", (req, res) => {
 });
 
 app.get("/api/walkers/summary", (req, res) => {
-    // 
+    // Return a summary of each walker with their average rating and number of completed walks.
 });
 module.exports = app;
