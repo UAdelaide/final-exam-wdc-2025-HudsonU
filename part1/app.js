@@ -7,9 +7,7 @@ const fs = require('fs').promises;
 // create app
 const app = express();
 
-const db = mysql.createConnection({
-    host: 'localhost'
-});
+var db;
 
 async function initDatabase() {
     try {
@@ -31,13 +29,12 @@ async function initDatabase() {
         console.log('Insertion script executed successfully.');
 
         await connection.end();
-        
+
         db = await mysql.createConnection({
             host: 'localhost',
-            user: 'yourusername',
-            password: 'yourpassword',
             database: 'DogWalkService'
         });
+        
     } catch (err) {
         console.error('Error during DB initialization:', err);
     }
