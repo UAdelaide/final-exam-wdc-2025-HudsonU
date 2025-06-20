@@ -91,7 +91,7 @@
                         console.error('Failed to fetch dog image:', error);
                     }
                 });
-                async fetchDogImage() => {
+                fetchDogImage(async () => {
                     try {
                         const res = await fetch('https://dog.ceo/api/breeds/image/random');
                         const data = await res.json();
@@ -99,7 +99,7 @@
                     } catch (error) {
                         console.error('Failed to fetch dog image:', error);
                     }
-                }
+                });
                 return {
                     dogImage
                 };
