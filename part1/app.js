@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 // app.js
 const express = require('express');
 const app = express();
@@ -19,6 +20,6 @@ app.get("/api/walkrequests/open", (req, res) => {
 });
 
 app.get("/api/walkers/summary", (req, res) => {
-
+    // 
 });
 module.exports = app;
