@@ -98,6 +98,9 @@ app.get("/api/walkrequests/open", async (req, res) => {
     const result = rows.map((row) => ({
         request_id: row.request_id,
         dog_name: row.name,
+        requested_time: row.requested_time,
+        requested_time: row.requested_time,
+        requested_time: row.requested_time,
         requested_time: row.username
     }));
 
