@@ -39,7 +39,7 @@ router.get('/me', (req, res) => {
 router.get('/mydogs', async (req, res) => {
   console.log("Inside /mydogs");
   if (!req.session.UserID) {
-    console.log()
+    console.log("failed to check user" + req.session.UserID);
     return res.status(401).json({ error: 'Not logged in' });
   }
   const userId = req.session.UserID;
