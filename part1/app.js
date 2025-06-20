@@ -12,32 +12,32 @@ const db = mysql.createConnection({
     database: 'DogWalkService'
 });
 
-    db.connect((err) => {
-        if (err) {
-            console.error('Failed to connect to database:', err);
-            return;
-        }
-        console.log('Connected to database.');
+db.connect((err) => {
+    if (err) {
+        console.error('Failed to connect to database:', err);
+        return;
+    }
+    console.log('Connected to database.');
 
-        // Load and run the SQL init script
-        var sql = fs.readFileSync('./dogwalks.sql', 'utf8');
-        db.query(sql, (err1, result) => {
-            if (err) {
-                console.error('Error running init.sql:', err1);
-            } else {
-                console.log('database script executed successfully.');
-            }
-        });
-        // load and run the table init script
-        sql = fs.readFileSync('./insertion.sql', 'utf8');
-        db.query(sql, (err2, result) => {
-            if (err) {
-                console.error('Error running init.sql:', err2);
-            } else {
-                console.log('table setup script executed successfully.');
-            }
-        });
+    // Load and run the SQL init script
+    var sql = fs.readFileSync('./dogwalks.sql', 'utf8');
+    db.query(sql, (err1, result) => {
+        if (err) {
+            console.error('Error running init.sql:', err1);
+        } else {
+            console.log('database script executed successfully.');
+        }
     });
+    // load and run the table init script
+    sql = fs.readFileSync('./insertion.sql', 'utf8');
+    db.query(sql, (err2, result) => {
+        if (err) {
+            console.error('Error running init.sql:', err2);
+        } else {
+            console.log('table setup script executed successfully.');
+        }
+    });
+});
 
 app.get('/', (req, res) => {
     res.send('Home page...');
