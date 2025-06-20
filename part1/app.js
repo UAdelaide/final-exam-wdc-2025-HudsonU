@@ -60,7 +60,7 @@ app.get("/api/dogs", async (req, res) => {
             }
         ]
     */
-    const [rows, fields] = await db.query('SELECT d.name, d.size, u.username FROM Dogs as d LEFT JOIN Users as u ON d.owner_id = u.user_id;');
+    const [rows] = await db.query('SELECT d.name, d.size, u.username FROM Dogs as d LEFT JOIN Users as u ON d.owner_id = u.user_id;');
 
     const result = rows.map((row) => ({
         dog_name: row.name,
