@@ -2,8 +2,8 @@
 /* eslint-disable max-len */
 // app.js
 const express = require('express');
-const mysql = require('mysql2');
-const fs = require('fs');
+const mysql = require('mysql2/promise');
+const fs = require('fs').promises;
 // create app
 const app = express();
 
