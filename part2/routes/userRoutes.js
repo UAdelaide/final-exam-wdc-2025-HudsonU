@@ -36,29 +36,22 @@ router.get('/me', (req, res) => {
   res.json(req.session.user);
 });
 
-router.get('/mydogs', (req, res) => {
+router.get('/mydogs', async (req, res) => {
   if (!req.session.user) {
     return res.status(401).json({ error: 'Not logged in' });
   }
   const userId = req.session.UserID;
 
-    // Query dog names for this owner
-    const [rows] = await db.query(
-      'SELECT name FROM Dogs WHERE owner_id = ?',
-      [userId]
-    );
+  // Query dog names for this owner
+  const [rows] = await db.query(
+    'SELECT name FROM Dogs WHERE owner_id = ?',
+    [userId]
+  );
 
-    // Extract just the names into an array
-    const dogNames = rows.map(row => row.name);
+  // Extract just the names into an array
+  const dogNames = rows.map((row) => row.name);
 
-    res.json({ dogs: dogNames });
-
-  } catch (err) {
-    console.error('Error fetching user dogs:', err);
-    res.status(500).json({ error: 'Server error' });
-  }
-});
-
+  res.json({ dogs: dogNames });
 });
 
 // POST login (dummy version)
