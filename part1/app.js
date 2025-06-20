@@ -64,17 +64,6 @@ app.get("/api/dogs", async (req, res) => {
 
 app.get("/api/walkrequests/open", async (req, res) => {
     // Return all open walk requests, including the dog name, requested time, location, and owner's username
-    /* [
-            {
-                "request_id": 1,
-                "dog_name": "Max",
-                "requested_time": "2025-06-10T08:00:00.000Z",
-                "duration_minutes": 30,
-                "location": "Parklands",
-                "owner_username": "alice123"
-            }
-        ]
-    */
     const [rows] = await db.query(`
         SELECT r.request_id, d.name, r.requested_time, r.duration_minutes, r.location, u.username
         FROM WalkRequests AS r
@@ -96,21 +85,6 @@ app.get("/api/walkrequests/open", async (req, res) => {
 
 app.get("/api/walkers/summary", async (req, res) => {
     // Return a summary of each walker with their average rating and number of completed walks.
-    /* [
-            {
-                "walker_username": "bobwalker",
-                "total_ratings": 2,
-                "average_rating": 4.5,
-                "completed_walks": 2
-            },
-            {
-                "walker_username": "newwalker",
-                "total_ratings": 0,
-                "average_rating": null,
-                "completed_walks": 0
-            }
-        ]
-    */
     const [rows] = await db.query(`
     SELECT u.username AS walker_username, COUNT(r.rating_id) AS total_ratings,
     ROUND(AVG(r.rating), 2) AS average_rating, COUNT(DISTINCT r.request_id) AS completed_walks
