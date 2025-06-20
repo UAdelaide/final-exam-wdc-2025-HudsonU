@@ -81,7 +81,7 @@
 
                 async function fetchDogImage() {
                     try {
-                        new Promise(resolve => setTimeout(resolve, 10000))
+                        await new Promise(resolve => setTimeout(resolve, 10000))
                         const res = await fetch('https://dog.ceo/api/breeds/image/random');
                         const data = await res.json();
                         dogImage.value = data.message;
