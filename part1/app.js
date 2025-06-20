@@ -45,7 +45,7 @@ app.get('/', (req, res) => {
     res.send('Home page...');
 });
 
-app.get("/api/dogs", (req, res) => {
+app.get("/api/dogs", async (req, res) => {
     // Return a list of all dogs with their size and owner's username.
     /* [
             {
@@ -63,7 +63,7 @@ app.get("/api/dogs", (req, res) => {
     const [rows, fields] = await db.query('SELECT dog_name, size, owner_username FROM Dogs');
 });
 
-app.get("/api/walkrequests/open", (req, res) => {
+app.get("/api/walkrequests/open", async (req, res) => {
     // Return all open walk requests, including the dog name, requested time, location, and owner's username
     /* [
             {
@@ -78,7 +78,7 @@ app.get("/api/walkrequests/open", (req, res) => {
     */
 });
 
-app.get("/api/walkers/summary", (req, res) => {
+app.get("/api/walkers/summary", async (req, res) => {
     // Return a summary of each walker with their average rating and number of completed walks.
     /* [
             {
