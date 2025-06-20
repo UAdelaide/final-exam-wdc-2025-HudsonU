@@ -35,7 +35,7 @@
 
 <body>
     <div id="app">
-        <button @click="refreshDogImage" style="
+        <button type=@click="refreshDogImage" style="
     position: fixed;
     top: 0px;
     left: 0px;
@@ -48,8 +48,6 @@
     z-index: 1000;
   " aria-label="Refresh dog image">
             Random Dog
-        </button>
-        🔄
         </button>
         <div class="dog-card" v-if="dogImage">
             <img :src="dogImage" alt=" ">
