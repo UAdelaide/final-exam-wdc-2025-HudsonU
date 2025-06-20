@@ -11,6 +11,25 @@ const db = mysql.createConnection({
     database: 'DogWalkService'
 });
 
+db.connect((err) => {
+    if (err) {
+        console.error('Failed to connect to database:', err);
+        return;
+    }
+    console.log('Connected to database.');
+
+    // Load and run the SQL script
+    const sql = fs.readFileSync('./init.sql', 'utf8');
+
+    db.query(sql, (err, result) => {
+        if (err) {
+            console.error('Error running init.sql:', err);
+        } else {
+            console.log('SQL script executed successfully.');
+        }
+    });
+});
+
 app.get('/', (req, res) => {
     res.send('Home page...');
 });
