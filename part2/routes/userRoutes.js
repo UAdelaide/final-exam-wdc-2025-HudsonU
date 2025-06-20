@@ -51,7 +51,7 @@ router.get('/mydogs', async (req, res) => {
 
   // Extract just the names into an array
   const dogNames = rows.map((row) => row.name);
-console.log("/mydogs sending:" + dognames);
+  console.log("/mydogs sending:" + dogNames);
   res.json({ dogs: dogNames });
 });
 
