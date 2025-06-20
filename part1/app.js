@@ -17,7 +17,6 @@ async function initDatabase() {
         const connection = await mysql.createConnection({
             host: 'localhost',
             multipleStatements: true
-            // Do NOT specify database here if you're creating it in script
         });
 
         console.log('Connected to database');
@@ -32,7 +31,7 @@ async function initDatabase() {
         await connection.query(insertSQL);
         console.log('Insertion script executed successfully.');
 
-        await connection.end(); // good practice
+        await connection.end();
     } catch (err) {
         console.error('Error during DB initialization:', err);
     }
