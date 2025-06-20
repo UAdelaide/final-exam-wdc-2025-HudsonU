@@ -1,5 +1,5 @@
 USING DogWalkService;
 
 INSERT INTO Users
-INSERT INTO WalkRequests
+INSERT INTO Dogs
 INSERT INTO WalkRequests
