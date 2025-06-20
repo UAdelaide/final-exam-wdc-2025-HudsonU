@@ -119,6 +119,7 @@
           }
         }
         async function logout() {
+          console.log("Trying to log out");
           try {
             const response = await fetch('api/users/logout', {
               method: 'POST',
