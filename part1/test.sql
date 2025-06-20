@@ -1,0 +1,1 @@
+SELECT d.dog_id, 
