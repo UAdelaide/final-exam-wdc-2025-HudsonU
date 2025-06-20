@@ -34,7 +34,6 @@ async function initDatabase() {
             host: 'localhost',
             database: 'DogWalkService'
         });
-        
     } catch (err) {
         console.error('Error during DB initialization:', err);
     }
