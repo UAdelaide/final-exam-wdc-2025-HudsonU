@@ -7,6 +7,10 @@ const fs = require('fs').promises;
 // create app
 const app = express();
 
+app.listen(8080, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+});
+
 var db;
 
 async function initDatabase() {
