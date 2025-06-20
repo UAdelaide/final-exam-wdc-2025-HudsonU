@@ -36,7 +36,7 @@
 <body>
     <div id="app">
         <div class="dog-card" v-if="dogImage">
-            <img :src="dogImage" alt="Dog of the Day">
+            <img src = "" :src="dogImage" alt="Dog of the Day">
             <h2>🐾 Dog of the Day: Max </h2>
             <p>Meet Max! A loyal and friendly doggy who loves long walks and belly rubs.</p>
             <h2>Anyway, here are some more dogs</h2>
@@ -55,15 +55,6 @@
                 const dogImage = ref(null);
 
                 onMounted(async () => {
-                    try {
-                        const res = await fetch('https://dog.ceo/api/breeds/image/random');
-                        const data = await res.json();
-                        dogImage.value = data.message;
-                    } catch (error) {
-                        console.error('Failed to fetch dog image:', error);
-                    }
-                });
-                randomDog(async () => {
                     try {
                         const res = await fetch('https://dog.ceo/api/breeds/image/random');
                         const data = await res.json();
