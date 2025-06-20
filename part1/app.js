@@ -20,18 +20,18 @@ db.connect((err) => {
 
     // Load and run the SQL init script
     var sql = fs.readFileSync('./dogwalks.sql', 'utf8');
-    db.query(sql, (err, result) => {
+    db.query(sql, (err1, result) => {
         if (err) {
-            console.error('Error running init.sql:', err);
+            console.error('Error running init.sql:', err1);
         } else {
             console.log('database script executed successfully.');
         }
     });
     // load and run the table init script
     var sql = fs.readFileSync('./insertion.sql', 'utf8');
-    db.query(sql, (err, result) => {
+    db.query(sql, (err2, result) => {
         if (err) {
-            console.error('Error running init.sql:', err);
+            console.error('Error running init.sql:', err2);
         } else {
             console.log('table setup script executed successfully.');
         }
