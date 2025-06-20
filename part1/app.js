@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable max-len */
 // app.js
 const express = require('express');
@@ -28,7 +29,7 @@ db.connect((err) => {
         }
     });
     // load and run the table init script
-    var sql = fs.readFileSync('./insertion.sql', 'utf8');
+    sql = fs.readFileSync('./insertion.sql', 'utf8');
     db.query(sql, (err2, result) => {
         if (err) {
             console.error('Error running init.sql:', err2);
