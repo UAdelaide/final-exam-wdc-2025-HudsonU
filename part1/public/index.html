@@ -35,7 +35,7 @@
 
 <body>
     <div id="app">
-        <button type="button" @click="refreshDog" style="
+        <button type="button" @click="fetchDogImage" style="
     position: fixed;
     top: 10px;
     left: 10px;
@@ -97,9 +97,6 @@
                     } catch (error) {
                         console.error('Failed to fetch dog image:', error);
                     }
-                }
-                function refreshDog() {
-                    fetchDogImage();
                 }
                 return {
                     dogImage
