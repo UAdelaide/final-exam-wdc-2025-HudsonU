@@ -98,6 +98,9 @@
                         console.error('Failed to fetch dog image:', error);
                     }
                 }
+                function refreshDog() {
+                    fetchDogImage();
+                }
                 return {
                     dogImage
                 };
