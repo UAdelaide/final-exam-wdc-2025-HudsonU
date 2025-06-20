@@ -60,7 +60,15 @@
                         console.error('Failed to fetch dog image:', error);
                     }
                 });
-
+                refreshDog(async () => {
+                    try {
+                        const res = await fetch('https://dog.ceo/api/breeds/image/random');
+                        const data = await res.json();
+                        dogImage.value = data.message;
+                    } catch (error) {
+                        console.error('Failed to fetch dog image:', error);
+                    }
+                });
                 return {
                     dogImage
                 };
