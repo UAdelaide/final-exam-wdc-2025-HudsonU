@@ -37,23 +37,20 @@ router.get('/me', (req, res) => {
 });
 
 router.get('/mydogs', async (req, res) => {
-  if (!req.session.UserID) {
-    console.log("failed to check user" + req.session.UserID);
+  if (!req.session || !req.session.UserID) {
     return res.status(401).json({ error: 'Not logged in' });
   }
+
   const userId = req.session.UserID;
 
-  // Query dog names for this owner
   const [rows] = await db.query(
-    'SELECT name FROM Dogs WHERE owner_id = ?',
+    'SELECT dog_id, name FROM Dogs WHERE owner_id = ?',
     [userId]
   );
 
-  // Extract just the names into an array
-  const dogNames = rows.map((row) => row.name);
-  console.log("/mydogs sending:" + dogNames);
-  res.json({ dogs: dogNames });
+  res.json(rows);
 });
+
 
 // POST login (dummy version)
 router.post('/login', async (req, res) => {
