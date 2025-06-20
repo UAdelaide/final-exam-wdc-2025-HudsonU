@@ -5,9 +5,7 @@ const mysql = require('mysql2');
 const app = express();
 
 const db = mysql.createConnection({
-    host: 'localhost',      // or your host (e.g., '127.0.0.1')
-    user: 'your_username',  // e.g., 'root'
-    password: 'your_password',
+    host: 'localhost',
     database: 'DogWalkService'
 });
 
