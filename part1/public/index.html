@@ -35,7 +35,7 @@
 
 <body>
     <div id="app">
-        <button @click="refreshDog" style="
+        <button @click="refreshDogImage" style="
     position: fixed;
     top: 0px;
     left: 0px;
@@ -91,7 +91,7 @@
                         console.error('Failed to fetch dog image:', error);
                     }
                 });
-                fetchDogImage(async () => {
+                refreshDogImage(async () => {
                     try {
                         const res = await fetch('https://dog.ceo/api/breeds/image/random');
                         const data = await res.json();
