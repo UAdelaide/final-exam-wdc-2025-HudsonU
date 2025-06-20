@@ -116,7 +116,26 @@
             message.value = '';
           }
         }
+        async function logout() {
+          try {
+            const response = await fetch('/logout', {
+              method: 'POST',
+              credentials: 'include'
+            });
 
+            if (response.redirected) {
+              // If server redirected (as in your code), go there
+              window.location.href = response.url;
+            } else {
+              const result = await response.json();
+              if (result.error) {
+                alert(result.error);
+              }
+            }
+          } catch (err) {
+            console.error('Logout failed:', err);
+          }
+        }
         onMounted(() => {
           loadWalks();
         });
