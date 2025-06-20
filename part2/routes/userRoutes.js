@@ -37,7 +37,6 @@ router.get('/me', (req, res) => {
 });
 
 router.get('/mydogs', async (req, res) => {
-  console.log("Inside /mydogs");
   if (!req.session.UserID) {
     console.log("failed to check user" + req.session.UserID);
     return res.status(401).json({ error: 'Not logged in' });
@@ -52,7 +51,7 @@ router.get('/mydogs', async (req, res) => {
 
   // Extract just the names into an array
   const dogNames = rows.map((row) => row.name);
-
+console.log("/mydogs sending:" + dognames);
   res.json({ dogs: dogNames });
 });
 
