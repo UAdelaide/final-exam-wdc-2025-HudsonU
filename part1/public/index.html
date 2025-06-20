@@ -64,14 +64,14 @@
                         const data = await res.json();
                         dogImage.value = data.message;
                         const res1 = await fetch('https://dog.ceo/api/breeds/image/random');
-                        const data1 = await res.json();
-                        dogImage.value = data.message;
+                        const data1 = await res1.json();
+                        dogImage1.value = data2.message;
                         const res2 = await fetch('https://dog.ceo/api/breeds/image/random');
-                        const data = await res.json();
-                        dogImage.value = data.message;
-                        const res = await fetch('https://dog.ceo/api/breeds/image/random');
-                        const data = await res.json();
-                        dogImage.value = data.message;
+                        const data2 = await res2.json();
+                        dogImage2.value = data2.message;
+                        const res3 = await fetch('https://dog.ceo/api/breeds/image/random');
+                        const data3 = await res2.json();
+                        dogImage3.value = data3.message;
                     } catch (error) {
                         console.error('Failed to fetch dog image:', error);
                     }
