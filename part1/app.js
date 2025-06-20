@@ -10,11 +10,7 @@ const db = mysql.createConnection({
 });
 
 app.get('/', (req, res) => {
-    res.send('Hello, Express!');
-});
-
-app.listen(3000, () => {
-    console.log('Server is running on http://localhost:3000');
+    res.send('Home page...');
 });
 
 app.get("/api/dogs", (req, res) => {
