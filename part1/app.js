@@ -19,12 +19,12 @@ db.connect((err) => {
     console.log('Connected to database.');
 
     // Load and run the SQL init script
-    const sql = fs.readFileSync('./dogwalks.sql', 'utf8');
+    var sql = fs.readFileSync('./dogwalks.sql', 'utf8');
     db.query(sql, (err, result) => {
         if (err) {
             console.error('Error running init.sql:', err);
         } else {
-            console.log('SQL script executed successfully.');
+            console.log('database script executed successfully.');
         }
     });
     // load and run the table init script
