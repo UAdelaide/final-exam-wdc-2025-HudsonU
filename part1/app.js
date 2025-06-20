@@ -13,6 +13,19 @@ app.listen(3000, () => {
 
 app.get("/api/dogs", (req, res) => {
     // Return a list of all dogs with their size and owner's username.
+    /* [
+  {
+    "dog_name": "Max",
+    "size": "medium",
+    "owner_username": "alice123"
+  },
+  {
+    "dog_name": "Bella",
+    "size": "small",
+    "owner_username": "carol123"
+  }
+]/
+*/
 });
 
 app.get("/api/walkrequests/open", (req, res) => {
