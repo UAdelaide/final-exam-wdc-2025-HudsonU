@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dog of the Day</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 2rem;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+
+        .dog-card {
+            background-color: white;
+            border-radius: 16px;
+            padding: 2rem;
+            max-width: 500px;
+            margin: auto;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .dog-card img {
+            max-width: 100%;
+            border-radius: 12px;
+        }
+
+        .dog-card h2 {
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="dog-card" v-if="dogImage">
+            <img :src="dogImage" alt="Dog of the Day">
+            <h2>🐾 Dog of the Day: Max the Golden Retriever</h2>
+            <p>Meet Max! A loyal and friendly golden retriever who loves long walks and belly rubs.</p>
+        </div>
+        <p v-else>Loading today's dog...</p>
+    </div>
+
+    <script>
+        const { createApp, onMounted, ref } = Vue;
+
+        createApp({
+            setup() {
+                const dogImage = ref(null);
+
+                onMounted(async () => {
+                    try {
+                        const res = await fetch('https://dog.ceo/api/breeds/image/random');
+                        const data = await res.json();
+                        dogImage.value = data.message;
+                    } catch (error) {
+                        console.error('Failed to fetch dog image:', error);
+                    }
+                });
+
+                return {
+                    dogImage
+                };
+            }
+        }).mount('#app');
+    </script>
+</body>
+
+</html>
