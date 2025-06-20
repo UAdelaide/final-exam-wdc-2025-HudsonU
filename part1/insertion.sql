@@ -21,3 +21,9 @@ INSERT INTO WalkRequests (dog_id, requested_time, duration_minutes, location, st
 ((SELECT dog_id FROM Dogs WHERE name = 'Kadabra'), "2025-06-12 08:00:00", 60, "Candylane Ln", "open"),
 ((SELECT dog_id FROM Dogs WHERE name = 'Alakazam'), "2025-06-13 08:00:00", 45, "Candylane Ln", "cancelled");
 
+INSERT INTO WalkApplications (request_id, walker_id, status) VALUES
+(1, (SELECT user_id FROM Users WHERE username = 'bobwalker'), 'accepted'),
+(2, (SELECT user_id FROM Users WHERE username = 'johndoe'), 'accepted'),
+(3, (SELECT user_id FROM Users WHERE username = 'bobwalker'), 'accepted'),
+(4, (SELECT user_id FROM Users WHERE username = 'johndoe'), 'accepted'),
+(5, (SELECT user_id FROM Users WHERE username = 'bobwalker'), 'accepted');
