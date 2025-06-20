@@ -34,26 +34,27 @@
         {{ errorMessage }}
       </div>
     </form>
-  <table>
-    <thead class="table-light">
-      <tr>
-        <th>Dog Name</th>
-        <th>Size</th>
-        <th>Owner Username</th>
-        <th>Photo</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="dog in dogs" :key="dog.dog_name">
-        <td>{{ dog.dog_name }}</td>
-        <td>{{ dog.size }}</td>
-        <td>{{ dog.owner_username || 'Unknown' }}</td>
-        <td>
-          <img :src="dog.photo" alt="Dog photo" style="width: 100px; border-radius: 8px;" />
-        </td>
-      </tr>
-    </tbody>
-  </table>
+    <table>
+      <thead class="table-light">
+        <tr>
+          <th>Dog Name</th>
+          <th>Size</th>
+          <th>Owner Username</th>
+          <th>Photo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="dog in dogs" :key="dog.dog_name">
+          <td>{{ dog.dog_name }}</td>
+          <td>{{ dog.size }}</td>
+          <td>{{ dog.owner_username || 'Unknown' }}</td>
+          <td>
+            <img :src="dog.photo" alt="Dog photo" style="width: 100px; border-radius: 8px;" />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <script>
     const { createApp, ref, onMounted } = Vue;
 
