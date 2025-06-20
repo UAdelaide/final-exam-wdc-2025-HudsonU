@@ -1,7 +1,10 @@
 /* eslint-disable max-len */
 // app.js
 const express = require('express');
+const mysql = req
 const app = express();
+
+const
 
 app.get('/', (req, res) => {
     res.send('Hello, Express!');
