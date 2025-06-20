@@ -30,7 +30,7 @@ router.post('/register', async (req, res) => {
 });
 
 router.get('/me', (req, res) => {
-  if (!req.session.user) {
+  if (!req.session.UserID) {
     return res.status(401).json({ error: 'Not logged in' });
   }
   res.json(req.session.user);
@@ -38,7 +38,7 @@ router.get('/me', (req, res) => {
 
 router.get('/mydogs', async (req, res) => {
   console.log("Inside /mydogs");
-  if (!req.session.user) {
+  if (!req.session.UserID) {
     return res.status(401).json({ error: 'Not logged in' });
   }
   const userId = req.session.UserID;
