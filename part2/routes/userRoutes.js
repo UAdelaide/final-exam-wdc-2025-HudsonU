@@ -36,6 +36,13 @@ router.get('/me', (req, res) => {
   res.json(req.session.user);
 });
 
+router.get('/mydogs', (req, res) => {
+  if (!req.session.user) {
+    return res.status(401).json({ error: 'Not logged in' });
+  }
+  res.json(req.session.user);
+});
+
 // POST login (dummy version)
 router.post('/login', async (req, res) => {
   const { username, password } = req.body;
