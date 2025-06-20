@@ -60,7 +60,7 @@ app.get("/api/dogs", (req, res) => {
             }
         ]
     */
-    
+    const [rows, fields] = await db.query('SELECT dog_name, size, owner_username FROM Dogs');
 });
 
 app.get("/api/walkrequests/open", (req, res) => {
