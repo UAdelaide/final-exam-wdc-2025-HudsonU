@@ -33,7 +33,7 @@ db.connect((err) => {
         if (err) {
             console.error('Error running init.sql:', err);
         } else {
-            console.log('SQL script executed successfully.');
+            console.log('table setup script executed successfully.');
         }
     });
 });
