@@ -124,5 +124,22 @@ app.get("/api/walkers/summary", async (req, res) => {
             }
         ]
     */
+    const [rows] = await db.query(`
+        SELECT r.request_id, d.name, r.requested_time, r.duration_minutes, r.location, u.username
+        FROM WalkRequests AS r
+        JOIN Dogs AS d ON r.dog_id = d.dog_id
+        JOIN Users AS u ON d.owner_id = u.user_id
+        WHERE r.status = 'open';`);
+
+    const result = rows.map((row) => ({
+        request_id: row.request_id,
+        dog_name: row.name,
+        requested_time: row.requested_time,
+        duration_minutes: row.duration_minutes,
+        location: row.location,
+        owner_username: row.username
+    }));
+
+    res.json(result);
 });
 module.exports = app;
