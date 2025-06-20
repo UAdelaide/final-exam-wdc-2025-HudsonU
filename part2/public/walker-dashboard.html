@@ -78,7 +78,27 @@
             message.value = '';
           }
         }
+        async function logout() {
+          console.log("Trying to log out");
+          try {
+            const response = await fetch('api/users/logout', {
+              method: 'POST',
+              credentials: 'include'
+            });
 
+            if (response.redirected) {
+
+              window.location.href = response.url;
+            } else {
+              const result = await response.json();
+              if (result.error) {
+                alert(result.error);
+              }
+            }
+          } catch (err) {
+            console.error('Logout failed:', err);
+          }
+        }
         onMounted(() => {
           loadWalkRequests();
         });
@@ -87,7 +107,8 @@
           walks,
           message,
           error,
-          applyToWalk
+          applyToWalk,
+          logout
         };
       }
     }).mount('#app');
