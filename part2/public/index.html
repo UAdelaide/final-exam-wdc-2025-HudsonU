@@ -19,8 +19,8 @@
       <h2 class="mb-4 text-center">Login</h2>
 
       <div>
-        <p>Email:</p>
-        <input type="email" v-model="email" class="form-control" placeholder="Email" required>
+        <p>Username:</p>
+        <input type="text" v-model="username" class="form-control" placeholder="username" required>
       </div>
 
       <div>
@@ -45,7 +45,7 @@
 
     createApp({
       setup() {
-        const email = ref('');
+        const username = ref('');
         const password = ref('');
         const errorMessage = ref('');
         const successMessage = ref('');
@@ -62,7 +62,7 @@
                 'Content-Type': 'application/json'
               },
               body: JSON.stringify({
-                email: email.value,
+                username: username.value,
                 password: password.value
               })
             });
@@ -81,7 +81,7 @@
         }
 
         return {
-          email,
+          username,
           password,
           login,
           errorMessage,
