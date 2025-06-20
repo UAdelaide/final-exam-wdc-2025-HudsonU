@@ -124,7 +124,7 @@
             });
 
             if (response.redirected) {
-              // If server redirected (as in your code), go there
+              
               window.location.href = response.url;
             } else {
               const result = await response.json();
