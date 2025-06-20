@@ -48,7 +48,7 @@
         const walks = ref([]);
         const message = ref('');
         const error = ref('');
-        const user = 3;
+        const user = ref(null);
 
         async function loadWalkRequests() {
           try {
@@ -68,7 +68,7 @@
             throw new Error('Not logged in');
           }
 
-          this.user = await response.json();
+          user.value = await response.json();
         }
         async function applyToWalk(requestId) {
           try {
