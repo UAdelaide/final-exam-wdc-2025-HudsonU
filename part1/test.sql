@@ -8,14 +8,12 @@ JOIN Dogs AS d ON r.dog_id = d.dog_id
 JOIN Users AS u ON d.owner_id = u.user_id
 WHERE r.status = 'open';
 
-SELECT u.username AS walker_username, COUNT(DISTINCT wr.request_id) AS completed_walks, COUNT(r.rating_id) AS total_ratings, AVG(r.rating) AS average_rating
+SELECT
+  u.username AS walker_username,
+  COUNT(r.rating_id) AS total_ratings,
+  ROUND(AVG(r.rating), 1) AS average_rating,
+  COUNT(DISTINCT r.request_id) AS completed_walks
 FROM Users u
-LEFT JOIN WalkRequests wr ON u.user_id = (
-  SELECT wa.walker_id
-  FROM WalkApplications wa
-  WHERE wa.request_id = wr.request_id AND wa.status = 'accepted'
-  LIMIT 1
-)
-LEFT JOIN WalkRatings r ON u.user_id = r.walker_id AND wr.request_id = r.request_id
-WHERE u.role = 'walker' AND wr.status = 'completed'
+LEFT JOIN WalkRatings r ON u.user_id = r.walker_id
+WHERE u.role = 'walker'
 GROUP BY u.user_id, u.username;
