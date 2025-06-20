@@ -25,7 +25,7 @@ app.use('/api/users', userRoutes);
 
 app.get("/api/dogs", async (req, res) => {
     // Return a list of all dogs with their size and owner's username.
-    const [rows] = await db.query('SELECT dog_id, d.name, d.size, d.owner_id FROM Dogs as d LEFT JOIN Users as u ON d.owner_id = u.user_id;');
+    const [rows] = await db.query('SELECT dog_id, name, size, owner_id FROM Dogs;');
 
     const result = rows.map((row) => ({
         dog_id: row.dog_id,
