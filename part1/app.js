@@ -8,8 +8,7 @@ const fs = require('fs').promises;
 const app = express();
 
 const db = mysql.createConnection({
-    host: 'localhost',
-    database: 'DogWalkService'
+    host: 'localhost'
 });
 
 async function initDatabase() {
