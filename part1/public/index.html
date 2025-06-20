@@ -79,7 +79,7 @@
             setup() {
                 const dogImage = ref(null);
 
-                onMounted(async () => {
+                async function fetchDogImage() {
                     try {
                         const res = await fetch('https://dog.ceo/api/breeds/image/random');
                         const data = await res.json();
@@ -87,22 +87,24 @@
                     } catch (error) {
                         console.error('Failed to fetch dog image:', error);
                     }
-                });
-                refreshDogImage(async () => {
-                    try {
-                        const res = await fetch('https://dog.ceo/api/breeds/image/random');
-                        const data = await res.json();
-                        dogImage.value = data.message;
-                    } catch (error) {
-                        console.error('Failed to fetch dog image:', error);
-                    }
-                });
+                }
+
+                // Call it when the component is mounted
+                onMounted(fetchDogImage);
+
+                // Use this method on button click
+                function refreshDogImage() {
+                    fetchDogImage();
+                }
+
                 return {
-                    dogImage
+                    dogImage,
+                    refreshDogImage
                 };
             }
         }).mount('#app');
     </script>
+
 </body>
 
 </html>
