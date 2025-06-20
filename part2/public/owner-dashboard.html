@@ -93,9 +93,7 @@
           const response = await fetch('/api/users/mydogs', {
             credentials: 'include'
           });
-
           if (!response.ok) throw new Error('Failed to fetch dogs');
-
           myDogs.value = await response.json();
         }
         async function loadWalks() {
