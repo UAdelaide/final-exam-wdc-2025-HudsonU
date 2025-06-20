@@ -37,6 +37,7 @@ router.get('/me', (req, res) => {
 });
 
 router.get('/mydogs', async (req, res) => {
+  console.log("Inside /mydogs");
   if (!req.session.user) {
     return res.status(401).json({ error: 'Not logged in' });
   }
