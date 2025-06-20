@@ -40,7 +40,25 @@ router.get('/mydogs', (req, res) => {
   if (!req.session.user) {
     return res.status(401).json({ error: 'Not logged in' });
   }
-  res.json(req.session.user);
+  const userId = req.session.UserID;
+
+    // Query dog names for this owner
+    const [rows] = await db.query(
+      'SELECT name FROM Dogs WHERE owner_id = ?',
+      [userId]
+    );
+
+    // Extract just the names into an array
+    const dogNames = rows.map(row => row.name);
+
+    res.json({ dogs: dogNames });
+
+  } catch (err) {
+    console.error('Error fetching user dogs:', err);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
 });
 
 // POST login (dummy version)
