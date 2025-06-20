@@ -8,7 +8,7 @@ const fs = require('fs').promises;
 const app = express();
 
 app.listen(8080, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Server is running on http://localhost:8080`);
 });
 
 var db;
