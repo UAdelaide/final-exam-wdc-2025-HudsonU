@@ -7,10 +7,6 @@ const fs = require('fs').promises;
 // create app
 const app = express();
 
-const db = mysql.createConnection({
-    host: 'localhost'
-});
-
 async function initDatabase() {
     try {
         const connection = await mysql.createConnection({
