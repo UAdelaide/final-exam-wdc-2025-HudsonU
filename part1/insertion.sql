@@ -1,3 +1,5 @@
-USING DogWalkService
+USING DogWalkService;
 
-INSERT INTO
+INSERT INTO Users
+INSERT INTO WalkRequests
+INSERT INTO WalkRequests
