@@ -57,7 +57,7 @@ router.post('/login', async (req, res) => {
 });
 
 router.post('/logout', async (req, res) => {
-  if (!req.session.user) {
+  if (!req.session.UserID) {
     return res.status(401).json({ error: 'Not logged in' });
   }
   req.session.destroy();
