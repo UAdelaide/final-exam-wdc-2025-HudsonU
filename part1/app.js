@@ -133,11 +133,9 @@ app.get("/api/walkers/summary", async (req, res) => {
 
     const result = rows.map((row) => ({
         walker_username: row.request_id,
-        dog_name: row.name,
-        requested_time: row.requested_time,
-        duration_minutes: row.duration_minutes,
-        location: row.location,
-        owner_username: row.username
+        total_ratings: row.name,
+        average_rating: row.requested_time,
+        completed_walks: row.duration_minutes
     }));
 
     res.json(result);
